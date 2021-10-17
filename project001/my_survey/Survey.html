@@ -1,0 +1,42 @@
+
+{{ block title }}
+アンケート
+{{ endblock }}
+
+{{ block content }}
+
+<label for="file">進行状況:</label>
+
+<progress id="file" max="100" value="42"> 42% </progress>
+
+
+<p>
+    <b>以下に、企業評価における重要な指標をいくつか取り上げています。</b>
+就活生として企業を評価するとき、各指標の優先度合について5段階で教えてください。
+    <b>"こんな企業に就職したいな・・</b>".
+    
+</p>
+
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>考慮しない</th>
+        <th>あまり考慮しない</th>
+        <th>どちらともいえない</th>
+        <th>やや考慮する</th>
+        <th>とても考慮する</th>
+    </tr>
+    {{ for field in form }}
+    <tr>
+        <th>{{ field.label }}</th>
+        {{ for option in field }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>
+{{ next_button }}
+<button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+
+{{ endblock }}
